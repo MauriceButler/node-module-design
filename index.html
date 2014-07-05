@@ -52,61 +52,19 @@
 				<section>
 					<h2>How does require handel files</h2>
 					<p>
-						When you call require and pass a value, makes a desicion based on the format of that string.
+						When you call require and pass a value, node makes a desicion based on the format of that string.
 					</p>
-					<br>
-					<ol>
-						<li class="fragment">If the value begins with a "." or a "/" treat as a file path otherwise treat as a module name</li>
-						<br>
-						<li class="fragment">If a file, resolve the path to a fully qualified file path.</li>
-						<br>
-						<li class="fragment">Check the require cache for something that matches the path if so return it.</li>
-					</ol>
-				</section>
-
-				<section>
-					<h3>File Path</h3>
-					<ol>
-						<li class="fragment">If a file path, follow the below order of resolution</li>
-						<br>
-						<li class="fragment">If the path resolves to a file without an extention, load it parsed as JavaScript.</li>
-						<br>
-						<li class="fragment">If the path resolves to a file with a js extention, load it parsed as JavaScript.</li>
-						<br>
-						<li class="fragment">If the path resolves to a file with a json extention, load it parsed as JSON.</li>
-						<br>
-						<li class="fragment">If the path resolves to a file with a node extention, load it as a binary file.</li>
-					</ol>
-				</section>
-
-				<section>
-					<h3>Directory</h3>
-					<ol>
-						<li class="fragment">If the path resolves to a directory, check for a package.json file.</li>
-						<br>
-						<li class="fragment">If there is a package.json load it and follow the main directive.</li>
-						<br>
-						<li class="fragment">If there is no package.json try to load index.js parsed as JavaScript.</li>
-						<br>
-						<li class="fragment">If there is no index.js try to load index.node as a binary file.</li>
-					</ol>
-				</section>
-
-				<section>
-					<h3>Module Name</h3>
-					<ol>
-						<li class="fragment">If it is a core node module, return it.</li>
-						<br>
-						<li class="fragment">If it is an installed dependency, walk up directorys untill a matching dependency is found.</li>
-						<br>
-						<li class="fragment">If a match is not found, throw an error.</li>
-					</ol>
+					<p>
+						The process it uses is written in sudo code in the <a href="https://github.com/MauriceButler/node/blob/master/doc/api/modules.markdown#all-together" target="_blank">documentation</a>.
+					</p>
 				</section>
 
 				<section>
 					<h2>module.exports</h2>
 					<p>
 						When you create a module you (usualy) want to be able to export something to be used by the calling code.
+					<p>
+					</p>
 						To do this the result of a require call will always be the value of the module.exports property.
 					</p>
 					<br>
@@ -126,6 +84,8 @@ console.log(testValue === 'myCoolTestValue'); // true
 				<section>
 					<p>
 						A reference to module.exports is also available as exports.
+					<p>
+					</p>
 						Imagine this line of code is inserted at the top of every module.
 					</p>
 
@@ -171,7 +131,7 @@ simpleMath.add(2, 3); // 5
 				<section>
 					<h2>Exporting a function / constructor</h2>
 					<p>
-						Another use case for a module is to return a single function or constructor.
+						Another pattern is to return a single function or constructor.
 					</p>
 					<p>
 						This is done by setting module.exports the function and is an example of why not to use exports.
@@ -205,8 +165,9 @@ rover.speak(); // Woof
 					<h2>Exporting a higher order function</h2>
 					<p>
 						A higher-order function is a function that returns another function.
-
-						This is usefull of you want to return a function from your module but need additional input to do so
+					<p>
+					</p>
+						This is usefull if you want to return a function from your module but need additional input to do so.
 					</p>
 					<pre><code data-trim contenteditable>
 // fooLogger.js
@@ -287,6 +248,8 @@ console.log(singleton2) // 'Version 1'
 					<h2>Single run or extention code</h2>
 					<p>
 						Modules do not nessesarily have to return someting to be usefull.
+					</p>
+					<p>
 						Because the code is run at require, they can also be used to run single use code or extend other objects.
 					</p>
 					<pre><code data-trim contenteditable>
@@ -310,28 +273,17 @@ console.log(foo.trim()); // 'My cool string'
 				</section>
 
 				<section>
-					<h1>Real World Application</h1>
+					<h2>Real World Application</h2>
 					<p>
 						Lets build a modular http server that:
-						<ul>
-							<li>Loads config from a JSON file</li>
-							<li>Passes all requests to a router</li>
-							<li>Automaticly parses query string data for the routes</li>
-							<li>Uses an external module to perform shared logic</li>
-						</ul>
 					</p>
-				</section>
-
-				<section>
-					<h1>Real World Application</h1>
-					<p>
-						Lets build a modular http server that:
-						<ul>
-							<li>Loads config from a JSON file</li>
-							<li>Passes all requests to a router</li>
-							<li>Uses some shared logic to process each route</li>
-						</ul>
-					</p>
+					<br>
+					<ul>
+						<li>Loads config from a JSON file</li>
+						<li>Passes all requests to a router</li>
+						<li>Uses an external module to instanciate objects</li>
+						<li>Uses another external module to perform shared logic</li>
+					</ul>
 				</section>
 
 				<section>
