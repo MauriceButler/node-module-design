@@ -268,13 +268,6 @@ var myCoolSingleton = 'Version 2';
 
 module.exports = global.myCoolSingleton = myCoolSingleton;
 					</code></pre>
-					<pre><code data-trim contenteditable>
-var singleton1 = require('./singleton'), // module 1
-	singleton2 = require('some/other/module/singleton'); // module 2
-
-console.log(singleton1) // 'Version 1'
-console.log(singleton2) // 'Version 1'
-					</code></pre>
 				</section>
 
 				<section>
@@ -299,7 +292,7 @@ console.log(singleton2) // 'Version 1'
 					<pre><code data-trim contenteditable>
 // stringExtentions.js
 String.prototype.trim = function () {
-    return this.replace(/^\s+|\s+$/g, "");
+    return this.replace(/^\s+|\s+$/g, '');
 };
 
 					</code></pre>
@@ -314,6 +307,31 @@ console.log(foo.trim); // [Function]
 
 console.log(foo.trim()); // 'My cool string'
 					</code></pre>
+				</section>
+
+				<section>
+					<h1>Real World Application</h1>
+					<p>
+						Lets build a modular http server that:
+						<ul>
+							<li>Loads config from a JSON file</li>
+							<li>Passes all requests to a router</li>
+							<li>Automaticly parses query string data for the routes</li>
+							<li>Uses an external module to perform shared logic</li>
+						</ul>
+					</p>
+				</section>
+
+				<section>
+					<h1>Real World Application</h1>
+					<p>
+						Lets build a modular http server that:
+						<ul>
+							<li>Loads config from a JSON file</li>
+							<li>Passes all requests to a router</li>
+							<li>Uses some shared logic to process each route</li>
+						</ul>
+					</p>
 				</section>
 
 				<section>

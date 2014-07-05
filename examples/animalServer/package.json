@@ -1,0 +1,15 @@
+{
+  "name": "animalServer",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "animalProcessor": "0.0.4",
+    "animals": "0.0.2"
+  }
+}
