@@ -94,7 +94,7 @@ console.log(testValue === 'myCoolTestValue'); // true
 var exports = module.exports = {};
 					</code></pre>
 
-					This means than exports can be used as a shorter reference to module.exports but I prefer not to uses it to avoid confusion when that reference is broken.
+					This means than exports can be used as a shorter reference to module.exports, but I prefer not to uses it to avoid confusion when that reference is broken.
 				</section>
 
 				<section>
@@ -191,7 +191,8 @@ fooLogger('bar'); // foo bar
 				<section>
 					<h2>Exporting a global singleton</h2>
 					<p>
-						Because require caches the value assigned to module.exports based on the resovled filename, all subsecquent calls to a require a module will (usualy) return the same instance.
+						Because require caches the value assigned to module.exports based on the resolved filename, all 
+						subsequent calls to require() will (usualy) return the same instance.
 					</p>
 					<br>
 					<p>
@@ -203,7 +204,12 @@ fooLogger('bar'); // foo bar
 				<section>
 					<h2>Exporting a global singleton</h2>
 					<p>
-						This is not very common and probably points to a biger problem with dependencies thus this is not recomended for every day use but it can be resolved.
+						This is not very common and probably points to a bigger problem with dependencies.
+					</p>
+					<p>
+					   	As a result, this is not recomended for every day, use but it can be resolved.
+					</p>
+					</p>
 					</p>
 					<pre><code data-trim contenteditable>
 // singleton.js - module 1
@@ -247,10 +253,10 @@ console.log(singleton2) // 'Version 1'
 				<section>
 					<h2>Single run or extention code</h2>
 					<p>
-						Modules do not nessesarily have to return someting to be usefull.
+						Modules do not nessesarily have to return something to be usefull.
 					</p>
 					<p>
-						Because the code is run at require, they can also be used to run single use code or extend other objects.
+						Because the code is run at require, they can also be used to run single use code or to extend other objects.
 					</p>
 					<pre><code data-trim contenteditable>
 // stringExtentions.js
