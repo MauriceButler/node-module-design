@@ -5,5 +5,6 @@ function Dog(){
 }
 
 Dog.prototype = Object.create(WalkingAnimal.prototype);
+Dog.prototype.constructor = Dog;
 
 module.exports = Dog;

@@ -5,5 +5,6 @@ function Cat(){
 }
 
 Cat.prototype = Object.create(WalkingAnimal.prototype);
+Cat.prototype.constructor = Cat;
 
 module.exports = Cat;

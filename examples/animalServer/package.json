@@ -9,7 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "animalProcessor": "0.0.4",
-    "animals": "0.0.2"
+    "animalProcessor": "^1.0.0",
+    "animals": "^1.0.0"
   }
 }
